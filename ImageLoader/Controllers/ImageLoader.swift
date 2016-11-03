@@ -31,7 +31,7 @@ public class ImageLoader {
     public struct LoadingTask {
         /// The URL of the image that is being loaded
         public let url: URL
-        private let task: URLSessionDataTask
+        private let task: SessionDataTask
         /// Has this task been cancelled
         public private(set) var cancelled: Bool = false
 
@@ -42,7 +42,7 @@ public class ImageLoader {
             cancelled = true
         }
 
-        fileprivate init(url: URL, task: URLSessionDataTask) {
+        fileprivate init(url: URL, task: SessionDataTask) {
             self.url = url
             self.task = task
         }
@@ -91,7 +91,7 @@ public class ImageLoader {
 
         let cachedResponse = cache.cachedResponse(for: request)
 
-        let task = session.dataTask(with: request) { (data, response, error) in
+        let task = session.sessionDataTask(with: request) { (data, response, error) in
             if let error = error as? NSError, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
                 return
             }

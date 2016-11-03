@@ -10,7 +10,11 @@ import Foundation
 
 protocol Session {
 
-    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func sessionDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> SessionDataTask
 }
 
-extension URLSession: Session { }
+extension URLSession: Session {
+    func sessionDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> SessionDataTask {
+        return dataTask(with: request, completionHandler: completionHandler)
+    }
+ }
