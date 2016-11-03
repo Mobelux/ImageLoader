@@ -66,11 +66,11 @@ public class ImageLoader {
         return ImageLoader(session: session, cache: cache, reachable: reachable)
     }()
 
-    private let session: URLSession
+    private let session: Session
     private let cache: URLCache
     private let reachable: Reachable
 
-    init(session: URLSession, cache: URLCache, reachable: Reachable) {
+    init(session: Session, cache: URLCache, reachable: Reachable) {
         self.session = session
         self.cache = cache
         self.reachable = reachable
