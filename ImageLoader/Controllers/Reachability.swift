@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Reachability {
+class Reachability: Reachable {
     var isReachable: Bool {
         // TODO: implement
         return true

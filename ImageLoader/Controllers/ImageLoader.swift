@@ -61,17 +61,18 @@ public class ImageLoader {
 
     public static let shared: ImageLoader = {
         let session = URLSession(configuration: sessionConfiguration)
-        return ImageLoader(session: session, cache: cache)
+        let reachable = Reachability()
+        return ImageLoader(session: session, cache: cache, reachable: reachable)
     }()
 
     private let session: URLSession
     private let cache: URLCache
-    private let reachability: Reachability
+    private let reachable: Reachable
 
-    init(session: URLSession, cache: URLCache) {
+    init(session: URLSession, cache: URLCache, reachable: Reachable) {
         self.session = session
         self.cache = cache
-        reachability = Reachability()
+        self.reachable = reachable
     }
 
     /// Load an image
@@ -126,7 +127,7 @@ public class ImageLoader {
         case .forceReload:
             requestCachePolicy = .reloadRevalidatingCacheData
         case .useCacheIfValid:
-            if reachability.isReachable {
+            if reachable.isReachable {
                 requestCachePolicy = .useProtocolCachePolicy
             } else {
                 // By using this policy if we aren't able to hit the server, we will force the system to used even expired cache data. Better to display a stale image then nothing if we can't connect

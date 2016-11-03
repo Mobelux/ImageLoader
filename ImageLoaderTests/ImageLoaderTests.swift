@@ -21,13 +21,15 @@ class ImageLoaderTests: XCTestCase {
         super.tearDown()
     }
 
-    private func configureLoader() -> ImageLoader {
+    private func configureLoader() -> (ImageLoader, URLSession, Reachable) {
         let session = URLSession(configuration: ImageLoader.sessionConfiguration)
-        return ImageLoader(session: session, cache: ImageLoader.cache)
+        let reachable = Reachability()
+        let loader = ImageLoader(session: session, cache: ImageLoader.cache, reachable: reachable)
+        return (loader, session, reachable)
     }
     
     func testBasicImage() {
-        let loader = configureLoader()
+        let (loader, _, _) = configureLoader()
         let imageURL = URL(string: "http://mobelux.com/static/img/mobelux-mark.99537226e971.png")!
 
         let loadingExpectation = expectation(description: "Basic image")
@@ -54,7 +56,7 @@ class ImageLoaderTests: XCTestCase {
     }
 
     func testCancellation() {
-        let loader = configureLoader()
+        let (loader, _, _) = configureLoader()
         let imageURL = URL(string: "http://mobelux.com/static/img/whoweare/banner-office2.66d4212c95ce.jpg")!
 
         let loadingExpectation = expectation(description: "Image cancellation")
