@@ -13,24 +13,66 @@ class ImageLoaderTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        ImageLoader.cache.removeAllCachedResponses()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        ImageLoader.cache.removeAllCachedResponses()
         super.tearDown()
     }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+
+    private func configureLoader() -> ImageLoader {
+        let session = URLSession(configuration: ImageLoader.sessionConfiguration)
+        return ImageLoader(session: session, cache: ImageLoader.cache)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testBasicImage() {
+        let loader = configureLoader()
+        let imageURL = URL(string: "http://mobelux.com/static/img/mobelux-mark.99537226e971.png")!
+
+        let loadingExpectation = expectation(description: "Basic image")
+
+        let task = loader.image(from: imageURL) { (image, fromCache) in
+            XCTAssertNotNil(image, "Didn't load the image")
+            XCTAssertFalse(fromCache, "First request should not be from the cache")
+
+            let task2 = loader.image(from: imageURL) { (image2, fromCache2) in
+                XCTAssertNotNil(image2, "Didn't load the image")
+                XCTAssert(fromCache2, "Second request should be from the cache")
+
+                loadingExpectation.fulfill()
+            }
+
+            XCTAssert(task2.url == imageURL, "URLs don't match")
+            XCTAssertFalse(task2.cancelled, "Task started as cancelled")
         }
+
+        XCTAssert(task.url == imageURL, "URLs don't match")
+        XCTAssertFalse(task.cancelled, "Task started as cancelled")
+
+        waitForExpectations(timeout: 10, handler: nil)
     }
+
+    func testCancellation() {
+        let loader = configureLoader()
+        let imageURL = URL(string: "http://mobelux.com/static/img/whoweare/banner-office2.66d4212c95ce.jpg")!
+
+        let loadingExpectation = expectation(description: "Image cancellation")
+
+        var task = loader.image(from: imageURL) { (image, fromCache) in
+            XCTAssert(false, "Task was cancelled, we should never get this response")
+        }
+
+        XCTAssert(task.url == imageURL, "URLs don't match")
+        XCTAssertFalse(task.cancelled, "Task started as cancelled")
+        task.cancel()
+        XCTAssert(task.cancelled, "Task didn't cancel")
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            loadingExpectation.fulfill()
+        }
+        waitForExpectations(timeout: 4, handler: nil)
+    }
+
     
 }
