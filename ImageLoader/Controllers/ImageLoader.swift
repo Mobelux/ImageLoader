@@ -17,9 +17,10 @@ public class ImageLoader {
         static let diskCacheSizeMB = 250 * 1024 * 1024
     }
 
-    /// The cache policy to use for an image request
+    /// The cache policy to use for an image request.
+    /// NOTE: If the device can't reach the internet, the cached image's headers will be ignored and we will return a stale image from the cache (if it exists) no matter the policy specified
     ///
-    /// - useCacheIfValid: If the image is in the cache & the cache headers say the image is valid, then use the cache. Else load from server. NOTE: If the device can't reach the internet, the cached image's headers will be ignored and we will return a stale image from the cache (if it exists).
+    /// - useCacheIfValid: If the image is in the cache & the cache headers say the image is valid, then use the cache. Else load from server
     /// - forceReload: Forces a reload from the server
     public enum CachePolicy {
         case useCacheIfValid
@@ -123,17 +124,19 @@ public class ImageLoader {
 
     private func cachePolicy(_ cachePolicy: CachePolicy) -> URLRequest.CachePolicy {
         let requestCachePolicy: URLRequest.CachePolicy
-        switch cachePolicy {
-        case .forceReload:
-            requestCachePolicy = .reloadRevalidatingCacheData
-        case .useCacheIfValid:
-            if reachable.isReachable {
+
+        if reachable.isReachable {
+            switch cachePolicy {
+            case .forceReload:
+                requestCachePolicy = .reloadRevalidatingCacheData
+            case .useCacheIfValid:
                 requestCachePolicy = .useProtocolCachePolicy
-            } else {
-                // By using this policy if we aren't able to hit the server, we will force the system to used even expired cache data. Better to display a stale image then nothing if we can't connect
-                requestCachePolicy = .returnCacheDataElseLoad
             }
+        } else {
+            // By using this policy if we aren't able to hit the server, we will force the system to used even expired cache data. Better to display a stale image then nothing if we can't connect
+            requestCachePolicy = .returnCacheDataElseLoad
         }
+
         return requestCachePolicy
     }
 }
