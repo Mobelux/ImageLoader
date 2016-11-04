@@ -32,6 +32,7 @@ public extension UIImageView {
         cancelImageLoad()
 
         let task = loader.image(from: imageURL) { (image, fromCache) in
+            loadingImageViews.removeObject(forKey: self)
             guard let image = image else {
                 completion?(false)
                 return
