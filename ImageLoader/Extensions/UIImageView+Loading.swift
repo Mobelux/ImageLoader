@@ -26,9 +26,10 @@ public extension UIImageView {
     ///
     /// - Parameters:
     ///   - imageURL: The URL to the image to load
+    ///   - fadeFromNetwork: Should images that are from the network (not cached) be faded in
     ///   - loader: The image loader instance to use. If none is given then the shared loader will be used
     ///   - completion: Called once the load & fade animation is finished. `success` will be `true` if we were able to load the requested image.
-    public func load(imageURL: URL, loader: ImageLoader = ImageLoader.shared, completion: ((_ success: Bool) -> Void)? = nil) {
+    public func load(imageURL: URL, fadeFromNetwork fade: Bool = true, loader: ImageLoader = ImageLoader.shared, completion: ((_ success: Bool) -> Void)? = nil) {
         cancelImageLoad()
 
         let task = loader.image(from: imageURL) { (image, fromCache) in
@@ -38,7 +39,7 @@ public extension UIImageView {
                 return
             }
 
-            if fromCache {
+            if fromCache || !fade {
                 self.image = image
                 completion?(true)
             } else {
