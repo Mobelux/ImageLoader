@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B07B5B81DCCC814002DAAE9 /* ImageViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B07B5B71DCCC814002DAAE9 /* ImageViewTests.swift */; };
+		6B07B5BA1DCCC865002DAAE9 /* mobelux.png in Resources */ = {isa = PBXBuildFile; fileRef = 6B07B5B91DCCC865002DAAE9 /* mobelux.png */; };
+		6B07B5BC1DCCCB4C002DAAE9 /* UIImageView+Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B07B5BB1DCCCB4C002DAAE9 /* UIImageView+Loading.swift */; };
+		6B6AF3FB1DCAAFF1003F0640 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF3FA1DCAAFF1003F0640 /* ImageLoader.swift */; };
+		6B6AF3FD1DCABB4E003F0640 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF3FC1DCABB4E003F0640 /* Reachability.swift */; };
+		6B6AF4001DCB671A003F0640 /* Reachable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF3FF1DCB671A003F0640 /* Reachable.swift */; };
+		6B6AF4021DCB6975003F0640 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF4011DCB6975003F0640 /* Session.swift */; };
+		6B6AF4071DCB6B2A003F0640 /* MockReachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF4061DCB6B2A003F0640 /* MockReachability.swift */; };
+		6B6AF4091DCB6B8C003F0640 /* MockSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF4081DCB6B8C003F0640 /* MockSession.swift */; };
+		6B6AF40B1DCB6CEC003F0640 /* SessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B6AF40A1DCB6CEC003F0640 /* SessionDataTask.swift */; };
+		6B6AF40D1DCB726D003F0640 /* mock_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 6B6AF40C1DCB726D003F0640 /* mock_image.jpg */; };
+		6B901C461DCCBC1500F2A72A /* UIImageView+Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B901C451DCCBC1500F2A72A /* UIImageView+Animation.swift */; };
 		6BCB12B11DCAACE50046FC70 /* ImageLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6BCB12A71DCAACE50046FC70 /* ImageLoader.framework */; };
 		6BCB12B61DCAACE50046FC70 /* ImageLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCB12B51DCAACE50046FC70 /* ImageLoaderTests.swift */; };
 		6BCB12B81DCAACE50046FC70 /* ImageLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BCB12AA1DCAACE50046FC70 /* ImageLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -23,6 +35,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6B07B5B71DCCC814002DAAE9 /* ImageViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewTests.swift; sourceTree = "<group>"; };
+		6B07B5B91DCCC865002DAAE9 /* mobelux.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mobelux.png; sourceTree = "<group>"; };
+		6B07B5BB1DCCCB4C002DAAE9 /* UIImageView+Loading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Loading.swift"; sourceTree = "<group>"; };
+		6B6AF3FA1DCAAFF1003F0640 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		6B6AF3FC1DCABB4E003F0640 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		6B6AF3FF1DCB671A003F0640 /* Reachable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachable.swift; sourceTree = "<group>"; };
+		6B6AF4011DCB6975003F0640 /* Session.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		6B6AF4061DCB6B2A003F0640 /* MockReachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockReachability.swift; sourceTree = "<group>"; };
+		6B6AF4081DCB6B8C003F0640 /* MockSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSession.swift; sourceTree = "<group>"; };
+		6B6AF40A1DCB6CEC003F0640 /* SessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionDataTask.swift; sourceTree = "<group>"; };
+		6B6AF40C1DCB726D003F0640 /* mock_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mock_image.jpg; sourceTree = "<group>"; };
+		6B901C451DCCBC1500F2A72A /* UIImageView+Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animation.swift"; sourceTree = "<group>"; };
 		6BCB12A71DCAACE50046FC70 /* ImageLoader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageLoader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BCB12AA1DCAACE50046FC70 /* ImageLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageLoader.h; sourceTree = "<group>"; };
 		6BCB12AB1DCAACE50046FC70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +77,8 @@
 		6B6AF3F81DCAAD70003F0640 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6B6AF3FA1DCAAFF1003F0640 /* ImageLoader.swift */,
+				6B6AF3FC1DCABB4E003F0640 /* Reachability.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -60,8 +86,30 @@
 		6B6AF3F91DCAAD70003F0640 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				6B901C451DCCBC1500F2A72A /* UIImageView+Animation.swift */,
+				6B07B5BB1DCCCB4C002DAAE9 /* UIImageView+Loading.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6B6AF3FE1DCB6708003F0640 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6B6AF3FF1DCB671A003F0640 /* Reachable.swift */,
+				6B6AF4011DCB6975003F0640 /* Session.swift */,
+				6B6AF40A1DCB6CEC003F0640 /* SessionDataTask.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		6B6AF4051DCB6B1C003F0640 /* Mocking */ = {
+			isa = PBXGroup;
+			children = (
+				6B6AF40C1DCB726D003F0640 /* mock_image.jpg */,
+				6B6AF4061DCB6B2A003F0640 /* MockReachability.swift */,
+				6B6AF4081DCB6B8C003F0640 /* MockSession.swift */,
+			);
+			path = Mocking;
 			sourceTree = "<group>";
 		};
 		6BCB129D1DCAACE50046FC70 = {
@@ -87,6 +135,7 @@
 			children = (
 				6B6AF3F81DCAAD70003F0640 /* Controllers */,
 				6B6AF3F91DCAAD70003F0640 /* Extensions */,
+				6B6AF3FE1DCB6708003F0640 /* Protocols */,
 				6BCB12AA1DCAACE50046FC70 /* ImageLoader.h */,
 				6BCB12AB1DCAACE50046FC70 /* Info.plist */,
 			);
@@ -96,7 +145,10 @@
 		6BCB12B41DCAACE50046FC70 /* ImageLoaderTests */ = {
 			isa = PBXGroup;
 			children = (
+				6B07B5B91DCCC865002DAAE9 /* mobelux.png */,
+				6B6AF4051DCB6B1C003F0640 /* Mocking */,
 				6BCB12B51DCAACE50046FC70 /* ImageLoaderTests.swift */,
+				6B07B5B71DCCC814002DAAE9 /* ImageViewTests.swift */,
 				6BCB12B71DCAACE50046FC70 /* Info.plist */,
 			);
 			path = ImageLoaderTests;
@@ -164,6 +216,7 @@
 				TargetAttributes = {
 					6BCB12A61DCAACE50046FC70 = {
 						CreatedOnToolsVersion = 8.1;
+						LastSwiftMigration = 0810;
 						ProvisioningStyle = Automatic;
 					};
 					6BCB12AF1DCAACE50046FC70 = {
@@ -202,6 +255,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B6AF40D1DCB726D003F0640 /* mock_image.jpg in Resources */,
+				6B07B5BA1DCCC865002DAAE9 /* mobelux.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,6 +267,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B07B5BC1DCCCB4C002DAAE9 /* UIImageView+Loading.swift in Sources */,
+				6B6AF40B1DCB6CEC003F0640 /* SessionDataTask.swift in Sources */,
+				6B901C461DCCBC1500F2A72A /* UIImageView+Animation.swift in Sources */,
+				6B6AF4021DCB6975003F0640 /* Session.swift in Sources */,
+				6B6AF3FD1DCABB4E003F0640 /* Reachability.swift in Sources */,
+				6B6AF3FB1DCAAFF1003F0640 /* ImageLoader.swift in Sources */,
+				6B6AF4001DCB671A003F0640 /* Reachable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,6 +281,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B07B5B81DCCC814002DAAE9 /* ImageViewTests.swift in Sources */,
+				6B6AF4091DCB6B8C003F0640 /* MockSession.swift in Sources */,
+				6B6AF4071DCB6B2A003F0640 /* MockReachability.swift in Sources */,
 				6BCB12B61DCAACE50046FC70 /* ImageLoaderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,6 +402,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -348,6 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobelux.ImageLoader;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -356,6 +423,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -374,6 +442,7 @@
 		6BCB12BF1DCAACE50046FC70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ImageLoaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobelux.ImageLoaderTests;
@@ -385,6 +454,7 @@
 		6BCB12C01DCAACE50046FC70 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = ImageLoaderTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobelux.ImageLoaderTests;
