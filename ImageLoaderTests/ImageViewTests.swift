@@ -112,4 +112,64 @@ class ImageViewTests: XCTestCase {
 
         waitForExpectations(timeout: 4, handler: nil)
     }
+
+    func testImageDefaultRenderingMode() {
+        let (loader, _, _) = configureLoader()
+
+        let imageURL = URL(string: "http://mobelux.com/static/img/mobelux-mark.99537226e971.png")!
+        let imageExpection = expectation(description: "Image loading")
+
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.load(imageURL: imageURL, loader: loader) { (success) in
+            XCTAssert(success, "Didn't load the image")
+            XCTAssertNotNil(view.image, "Didn't load the image")
+            if let image = view.image {
+                XCTAssert(image.renderingMode == .automatic, "Default rendering mode incorrect")
+            }
+
+            imageExpection.fulfill()
+        }
+
+        waitForExpectations(timeout: 4, handler: nil)
+    }
+
+    func testImageOriginalRenderingMode() {
+        let (loader, _, _) = configureLoader()
+
+        let imageURL = URL(string: "http://mobelux.com/static/img/mobelux-mark.99537226e971.png")!
+        let imageExpection = expectation(description: "Image loading")
+
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.load(imageURL: imageURL, renderingMode: .alwaysOriginal, loader: loader) { (success) in
+            XCTAssert(success, "Didn't load the image")
+            XCTAssertNotNil(view.image, "Didn't load the image")
+            if let image = view.image {
+                XCTAssert(image.renderingMode == .alwaysOriginal, "Original rendering mode incorrect")
+            }
+
+            imageExpection.fulfill()
+        }
+
+        waitForExpectations(timeout: 4, handler: nil)
+    }
+
+    func testImageTemplateRenderingMode() {
+        let (loader, _, _) = configureLoader()
+
+        let imageURL = URL(string: "http://mobelux.com/static/img/mobelux-mark.99537226e971.png")!
+        let imageExpection = expectation(description: "Image loading")
+
+        let view = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        view.load(imageURL: imageURL, renderingMode: .alwaysTemplate, loader: loader) { (success) in
+            XCTAssert(success, "Didn't load the image")
+            XCTAssertNotNil(view.image, "Didn't load the image")
+            if let image = view.image {
+                XCTAssert(image.renderingMode == .alwaysTemplate, "Template rendering mode incorrect")
+            }
+
+            imageExpection.fulfill()
+        }
+
+        waitForExpectations(timeout: 4, handler: nil)
+    }
 }

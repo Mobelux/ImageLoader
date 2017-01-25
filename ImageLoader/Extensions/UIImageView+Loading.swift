@@ -27,17 +27,20 @@ public extension UIImageView {
     /// - Parameters:
     ///   - imageURL: The URL to the image to load
     ///   - fadeFromNetwork: Should images that are from the network (not cached) be faded in
+    ///   - renderingMode: Should the image use a specific rendering mode. The default value is `automatic`
     ///   - loader: The image loader instance to use. If none is given then the shared loader will be used
     ///   - completion: Called once the load & fade animation is finished. `success` will be `true` if we were able to load the requested image.
-    public func load(imageURL: URL, fadeFromNetwork fade: Bool = true, loader: ImageLoader = ImageLoader.shared, completion: ((_ success: Bool) -> Void)? = nil) {
+    public func load(imageURL: URL, fadeFromNetwork fade: Bool = true, renderingMode: UIImageRenderingMode = .automatic, loader: ImageLoader = ImageLoader.shared, completion: ((_ success: Bool) -> Void)? = nil) {
         cancelImageLoad()
 
         let task = loader.image(from: imageURL) { (image, fromCache) in
             loadingImageViews.removeObject(forKey: self)
-            guard let image = image else {
+
+            guard let image = image?.withRenderingMode(renderingMode) else {
                 completion?(false)
                 return
             }
+
 
             if fromCache || !fade {
                 self.image = image
