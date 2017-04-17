@@ -92,7 +92,7 @@ public class ImageLoader {
         let cachedResponse = cache.cachedResponse(for: request)
 
         let task = session.sessionDataTask(with: request) { (data, response, error) in
-            if let error = error as? NSError, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+            if let error = error as NSError?, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
                 return
             }
             guard let data = data else {
