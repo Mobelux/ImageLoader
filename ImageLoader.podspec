@@ -6,8 +6,8 @@ s.summary      = "Loading images across a network"
 s.homepage     = "https://github.com/Mobelux/ImageLoader"
 s.license      = "MIT"
 
-s.author             = { "Andrew Mayers" => "andrew@mobelux.com" }
-s.social_media_url   = "http://twitter.com/jamayers"
+s.author             = { "Mobelux" => "contact@mobelux.com" }
+s.social_media_url   = "http://twitter.com/mobelux"
 
 s.ios.deployment_target = "10.0"
 
