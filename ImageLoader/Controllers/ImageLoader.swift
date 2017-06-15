@@ -102,43 +102,35 @@ public class ImageLoader {
     ///   - cachePolicy: How to use the cache
     ///   - complete: Called on the main queue once the load completes (not called when the task was cancelled).
     /// - Returns: A `LoadingTask` that you can use to cancel the load at a later time
-    public func image(from url: URL, cachePolicy: CachePolicy = .useCacheIfValid, complete: @escaping Complete) -> LoadingTask {
+    public func image(from url: URL, cachePolicy: CachePolicy = .useCacheIfValid, complete: @escaping Complete) -> LoadingTask? {
 
         let requestCachePolicy = self.cachePolicy(cachePolicy)
         var request = URLRequest(url: url, cachePolicy: requestCachePolicy, timeoutInterval: Constants.timeoutInterval)
         request.httpMethod = "GET"
 
-        let cachedResponse = cache.cachedResponse(for: request)
-
-        let task = session.sessionDataTask(with: request) { (data, response, error) in
-            if let error = error as NSError?, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
-                return
-            }
-            guard let data = data else {
-                DispatchQueue.main.async {
-                    complete(nil, false)
+        if let cachedResponse = cache.cachedResponse(for: request) {
+            complete(UIImage(data: cachedResponse.data), true)
+            return nil
+        } else {
+            let task = session.sessionDataTask(with: request) { (data, response, error) in
+                if let error = error as NSError?, error.domain == NSURLErrorDomain && error.code == NSURLErrorCancelled {
+                    return
                 }
-                return
+                guard let data = data else {
+                    DispatchQueue.main.async {
+                        complete(nil, false)
+                    }
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    complete(UIImage(data: data), false)
+                }
             }
-
-            // Future optimization would be to force image decompression while still on the background queue
-            // Once we do that, it may be worth using the disk cache for the Data, but use a LRU memory cache for the decompressed image
-            let image = UIImage(data: data)
-
-            let fromCache: Bool
-            if let cachedResponse = cachedResponse {
-                fromCache = cachedResponse.data == data
-            } else {
-                fromCache = false
-            }
-
-            DispatchQueue.main.async {
-                complete(image, fromCache)
-            }
+            
+            task.resume()
+            return LoadingTask(url: url, task: task)
         }
-
-        task.resume()
-        return LoadingTask(url: url, task: task)
     }
 
     private func cachePolicy(_ cachePolicy: CachePolicy) -> URLRequest.CachePolicy {

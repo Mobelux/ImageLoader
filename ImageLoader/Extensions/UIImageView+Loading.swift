@@ -30,8 +30,8 @@ import UIKit
 private let loadingImageViews: NSMapTable = NSMapTable<UIImageView, TaskBox>(keyOptions: .weakMemory, valueOptions: .strongMemory)
 
 private class TaskBox {
-    var task: ImageLoader.LoadingTask
-    init(task: ImageLoader.LoadingTask) {
+    var task: ImageLoader.LoadingTask?
+    init(task: ImageLoader.LoadingTask?) {
         self.task = task
     }
 }
@@ -78,7 +78,7 @@ public extension UIImageView {
     /// Cancels any image loading for this image view. If the image view is in a table/collection view cell/header you should call this in `prepareForReuse()`. It is called automatically when you start loading a new image on this view using the `load(imageURL:completion:)` method, so no need to call it just prior to calling that.
     public func cancelImageLoad() {
         guard let taskBox = loadingImageViews.object(forKey: self) else { return }
-        taskBox.task.cancel()
+        taskBox.task?.cancel()
         loadingImageViews.removeObject(forKey: self)
     }
 }
