@@ -2,3 +2,5 @@
 
 # ImageLoader
 A small library for loading images over the internet
+
+NOTE: This repo is deprecated. The new `Operation` based image loading library is [here](https://github.com/Mobelux/ImageLoader).
